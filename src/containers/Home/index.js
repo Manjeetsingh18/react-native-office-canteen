@@ -79,11 +79,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     header: {
-        backgroundColor: "#eee",
+        backgroundColor: "#fff",
         shadowColor: "black",
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 5,
         elevation: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
         zIndex: 10000
     },
     innerHeader: {

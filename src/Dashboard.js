@@ -34,10 +34,7 @@ export class HomeTab extends React.Component<NavigationProps<*>> {
                                 >
                                     <View style={styles.tab}>
                                         <Icon name={info.icon} size={25} {...{ color }} />
-                                        <Text
-                                            style={{
-                                                color: color
-                                            }}>{info.label}</Text>
+                                        <Text style={{color: color}}>{info.label}</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
                             );

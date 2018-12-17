@@ -1,1 +1,1 @@
-export { HomeTab } from "./Home";
+export { HomeTab } from "./Dashboard";
