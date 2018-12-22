@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default class App extends React.Component {
 
@@ -20,16 +20,13 @@ export default class App extends React.Component {
     }
 
     selectPhotoTapped() {
-        const options = {
-            quality: 1.0,
-            maxWidth: 500,
-            maxHeight: 500,
-            storageOptions: {
-                skipBackup: true,
-            },
-        };
-
-
+        ImagePicker.openPicker({
+            width: 300,
+            height: 400,
+            cropping: true
+        }).then(image => {
+            console.log(image);
+        });
     }
 
 
@@ -58,7 +55,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center' 
+        alignItems: 'center'
     },
     avatarContainer: {
         borderColor: '#9B9B9B',

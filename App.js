@@ -9,7 +9,7 @@
 import * as React from "react";
 import { StatusBar, Platform } from "react-native";
 import { SwitchNavigator, StackNavigator, TabNavigator } from "react-navigation";
-import { Dashboard, Profile, Transactions, History } from './src/containers'
+import { Home, Profile, Transactions, History, Payment } from './src/containers'
 import { HomeTab } from './src';
 
 export default class App extends React.Component {
@@ -27,8 +27,10 @@ const StackNavigatorOptions = {
   }
 };
 
+
 const ExploreNavigator = StackNavigator({
-  Home: { screen: Dashboard }
+  Home: { screen: Home },
+  Payment: { screen: Payment }
 }, StackNavigatorOptions);
 
 const ProfileNavigator = StackNavigator({
@@ -37,8 +39,11 @@ const ProfileNavigator = StackNavigator({
 
 const TransactionNavigator = StackNavigator({
   Transactions: { screen: Transactions },
+  Payment: { screen: Payment },
   History: { screen: History }
 }, StackNavigatorOptions);
+
+
 
 const HomeTabs = TabNavigator({
   Home: { screen: ExploreNavigator },
@@ -64,9 +69,6 @@ const HomeNavigator = SwitchNavigator({
   Walkthrough: { screen: HomeTabs }
 }, StackNavigatorOptions);
 
-const SignUpNavigator = StackNavigator({
-  SignUp: { screen: Dashboard },
-}, StackNavigatorOptions);
 
 const AppNavigator = SwitchNavigator({
   Home: { screen: HomeNavigator }

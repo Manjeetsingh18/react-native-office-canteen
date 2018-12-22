@@ -1,7 +1,4 @@
-import Dashboard from './Home';
+export { Home } from './Home';
 export { Transactions, History } from "./Transactions";
 export { Profile } from './Profile';
-export {
-    Dashboard
-}
-
+export { Payment } from './Payment'

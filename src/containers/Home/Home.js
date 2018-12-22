@@ -4,42 +4,23 @@ import {
     View,
     Animated,
     SafeAreaView,
-    Platform,
-    FlatList
+    TouchableWithoutFeedback,
+    Platform
 } from "react-native";
-import { ListItem, Body, Left, Right, Icon, Button } from 'native-base';
 import moment from "moment";
 import { Text, Theme } from '../../components';
-
+import { Button, Icon } from "native-base";
 const AnimatedText = Animated.createAnimatedComponent(Text);
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
-export default class Transactions extends React.Component {
+export default class Dashboard extends React.Component {
 
     state = {
-        scrollAnimation: new Animated.Value(0),
-        data: [
-            { name: "Passbook" },
-            { name: "Transaction List" }
-        ]
-    };
-
-    onPressSelectiTem = () => {
-        this.props.navigation.navigate("History");
-    }
-
-    renderItem = ({ item }) => {
-        return (
-            <ListItem onPress={() => this.onPressSelectiTem()}>
-                <Body style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={Theme.typography.large}>{item.name}</Text>
-                </Body>
-            </ListItem>
-        );
+        scrollAnimation: new Animated.Value(0)
     };
 
     onPressPayment = () => {
-        this.props.navigation.navigate('Payment'); 
+        this.props.navigation.navigate('Payment');
     }
 
     render() {
@@ -89,7 +70,7 @@ export default class Transactions extends React.Component {
                                     type="large"
                                     style={[styles.newPosts, { opacity, transform: [{ translateY }] }]}
                                 >
-                                    Transactions
+                                    Dashboard
                             </AnimatedText>
                                 <AnimatedText
                                     type="header2"
@@ -101,7 +82,7 @@ export default class Transactions extends React.Component {
                             <Button
                                 transparent
                                 onPress={() => {
-                                    this.onPressPayment()
+                                    this.onPressPayment();
                                 }}
                                 style={{
                                     marginLeft: 10,
@@ -114,22 +95,9 @@ export default class Transactions extends React.Component {
                                 <Text style={{ color: Theme.palette.primary }}>Pay</Text>
                             </Button>
                         </View>
-
                     </Animated.View>
+
                 </AnimatedSafeAreaView>
-                <FlatList
-                    onScroll={Animated.event([{
-                        nativeEvent: {
-                            contentOffset: {
-                                y: scrollAnimation
-                            }
-                        }
-                    }])}
-                    data={this.state.data}
-                    renderItem={this.renderItem}
-                    keyExtractor={item => item.name}
-                    stickyHeaderIndices={this.state.stickyHeaderIndices}
-                />
             </View>
         );
     }
